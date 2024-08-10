@@ -29,7 +29,9 @@ app.set("views", path.resolve("./views"))
 // Routes
 app.use('/api', authRoutes);
 app.use('/api', toDoRoutes);
-app.use("/", toDoRoutes)
+app.get("/", (req, res) => {
+        return res.render("login");
+    });
 
 
 
