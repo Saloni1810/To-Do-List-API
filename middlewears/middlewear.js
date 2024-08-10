@@ -14,6 +14,12 @@ const configureMiddleware = (app) => {
     // app.use(methodOverride('_method'));
     app.use(cookieParser())
     app.use(express.static('public'));
+    app.use((req, res, next) => {
+      res.setHeader('Cache-Control', 'no-store'); // Disable caching
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+      next();
+  });
   };
   
   export default configureMiddleware;
